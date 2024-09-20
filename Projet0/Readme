@@ -3,7 +3,7 @@ ___________________________
 Projet de Carte Interactive
 ___________________________
 
-Ce projet crée une carte interactive simple en utilisant l'API Google Maps. 
+Ce projet crée une carte interactive en utilisant l'API Google Maps. 
 Il affiche une carte de la France avec une ligne reliant trois villes : Paris, Dijon et Tours.
 
 1/ Fonctionnalités
