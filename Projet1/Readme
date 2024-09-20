@@ -1,0 +1,146 @@
+____________________________________
+
+Projet d'Algorithme TOPSIS en Java
+____________________________________
+
+Ce projet implémente l'algorithme TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution) en Java. 
+TOPSIS est une méthode d'analyse décisionnelle multicritère utilisée pour comparer un ensemble d'options en fonction de plusieurs critères.
+
+1/ Fonctionnalités
+
+- Lecture des données d'entrée à partir d'un fichier CSV.
+- Implémentation de l'algorithme TOPSIS complet.
+- Calcul et affichage des résultats pour chaque option.
+- Identification de la meilleure option selon l'algorithme.
+
+----------------------------------------------------------Petite Parenthèse-----------------------------------------------------------------
+
+• Qu'est-ce que TOPSIS ?
+
+TOPSIS signifie "Technique for Order of Preference by Similarity to Ideal Solution" (Technique pour l'Ordre de Préférence par Similarité à la Solution Idéale). C'est une méthode d'analyse décisionnelle multicritère utilisée pour comparer plusieurs options en fonction de différents critères.
+
+• À quoi sert TOPSIS ?
+
+TOPSIS est utilisé pour aider à prendre des décisions complexes lorsqu'il y a plusieurs options et plusieurs facteurs à considérer. Par exemple :
+
+Choisir la meilleure voiture à acheter en considérant le prix, la consommation, la sécurité, etc.
+Sélectionner le meilleur emplacement pour une nouvelle usine en tenant compte du coût, de l'accessibilité, de la main-d'œuvre disponible, etc.
+Évaluer des candidats pour un poste en fonction de leurs compétences, expérience, personnalité, etc.
+
+• Comment fonctionne TOPSIS ?
+
+TOPSIS fonctionne en 6 étapes principales :
+
+- Création de la matrice de décision :
+- On liste toutes les options et leurs performances pour chaque critère.
+  Normalisation :
+- On ajuste les valeurs pour pouvoir comparer des critères différents (comme le prix et la sécurité).
+  Pondération :
+- On applique des poids pour refléter l'importance relative de chaque critère.
+  Détermination des solutions idéales :
+- On identifie la meilleure et la pire performance pour chaque critère.
+  Calcul des distances :
+- Pour chaque option, on calcule sa distance par rapport à la solution idéale et à la pire solution.
+  Calcul du score final :
+- On obtient un score entre 0 et 1 pour chaque option. Plus le score est proche de 1, meilleure est l'option.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+• Structure de la Classe
+
+La classe principale TOPSISAlgorithm contient plusieurs attributs et méthodes qui travaillent ensemble pour implémenter l'algorithme TOPSIS.
+
+• Attributs de la Classe
+
+criteria: Liste des noms des critères.
+weights: Liste des poids associés à chaque critère.
+isNegative: Liste indiquant si chaque critère est à minimiser (true) ou à maximiser (false).
+decisionMatrix: Matrice contenant les valeurs de chaque option pour chaque critère.
+numOptions: Nombre total d'options.
+optionNames: Liste des noms des options.
+
+• Constructeur
+public TOPSISAlgorithm(String csvFilePath)
+
+Utilité :
+
+- Initialise l'objet TOPSISAlgorithm.
+- Initialise toutes les listes nécessaires, y compris la nouvelle liste optionNames.
+- Déclenche le chargement des données à partir du fichier CSV spécifié.
+
+• Méthode loadDataFromCSV
+private void loadDataFromCSV(String csvFilePath)
+
+Utilité :
+
+- Lit le fichier CSV spécifié et extrait toutes les données nécessaires.
+- Remplit les listes criteria, weights, isNegative, et la matrice decisionMatrix.
+- Nouvelle fonctionnalité : Lit et stocke les noms des options à partir de l'en-tête du CSV dans optionNames.
+- Gère les erreurs potentielles lors de la lecture du fichier.
+- Affiche des informations de débogage sur les données chargées.
+
+• Méthode calculateTOPSIS
+public List<Double> calculateTOPSIS()
+
+Utilité :
+
+- Il s'agit de la méthode principale qui orchestre l'exécution de l'algorithme TOPSIS.
+
+Étapes :
+
+- Normalise la matrice de décision.
+- Calcule la matrice normalisée pondérée.
+- Détermine les solutions idéales et anti-idéales.
+- Calcule les séparations de l'idéal et de l'anti-idéal.
+- Calcule la proximité relative pour chaque option.
+
+
+Retourne les scores finaux TOPSIS pour chaque option.
+
+• Méthode normalizeMatrix
+private List<List<Double>> normalizeMatrix()
+
+Utilité :
+
+- Normalise la matrice de décision pour rendre les critères comparables.
+- Utilise la normalisation vectorielle.
+- Gère le cas de division par zéro pour éviter les erreurs.
+
+• Méthode calculateWeightedNormalizedMatrix
+private List<List<Double>> calculateWeightedNormalizedMatrix(List<List<Double>> normalizedMatrix)
+
+Utilité :
+
+- Applique les poids aux valeurs de la matrice normalisée.
+- Multiplie chaque valeur normalisée par le poids correspondant du critère.
+
+• Méthode printMatrix
+private void printMatrix(String name, List<List<Double>> matrix)
+
+Utilité :
+
+- Affiche une matrice donnée de manière lisible dans la console.
+- Utile pour le débogage et pour suivre les étapes intermédiaires de l'algorithme.
+
+• Méthode main
+public static void main(String[] args)
+
+Utilité :
+
+- Point d'entrée du programme.
+- Gère les arguments de ligne de commande pour spécifier le fichier CSV.
+- Crée une instance de TOPSISAlgorithm et exécute l'algorithme.
+- Nouvelle fonctionnalité : Affiche les résultats finaux avec les noms des options, incluant :
+
+Les scores TOPSIS pour chaque option nommée.
+La meilleure option avec son nom et son score.
+
+
+
+• Flux d'Exécution
+
+- Le programme commence dans main, où il charge les données du CSV, y compris les noms des options.
+- calculateTOPSIS est appelée pour exécuter l'algorithme.
+- À l'intérieur de calculateTOPSIS, les méthodes normalizeMatrix et calculateWeightedNormalizedMatrix sont utilisées pour préparer les données.
+- Les calculs TOPSIS sont effectués étape par étape dans calculateTOPSIS.
+- Les résultats sont retournés à main qui les affiche, en associant chaque score à son nom d'option correspondant.

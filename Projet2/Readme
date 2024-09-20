@@ -1,0 +1,20 @@
+________________________________________
+
+Projet de Traitement de Données de Vent
+________________________________________
+
+Ce projet Python est conçu pour traiter de grands ensembles de données météorologiques,
+spécifiquement des données de vent, à partir de fichiers NetCDF. 
+Il calcule la vitesse moyenne annuelle du vent et exporte les résultats dans un fichier CSV.
+
+• Fonctionnalités
+
+- Lecture de fichiers NetCDF contenant des données de vent (composantes u et v).
+- Calcul de la vitesse du vent à partir des composantes u et v.
+- Calcul de la moyenne annuelle de la vitesse du vent.
+- Exportation des résultats dans un fichier CSV.
+- Traitement des données par morceaux (chunks) pour gérer efficacement de grands ensembles de données.
+
+• 2ème Partie
+
+Au sein du fichier palaiseau.py, affichage du vent maximal au niveau du sol puis à 20km d'altitude.

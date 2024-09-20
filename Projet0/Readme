@@ -1,0 +1,21 @@
+___________________________
+
+Projet de Carte Interactive
+___________________________
+
+Ce projet crée une carte interactive simple en utilisant l'API Google Maps. 
+Il affiche une carte de la France avec une ligne reliant trois villes : Paris, Dijon et Tours.
+
+1/ Fonctionnalités
+
+- Affiche une carte centrée sur Paris.
+- Marque les emplacements de Paris, Dijon et Tours.
+- Trace une ligne rouge reliant ces trois villes.
+
+2/ Comment ça marche
+
+Le code est composé d'une seule fonction appelée initMap. Voici ce qu'elle fait :
+
+- Définition des coordonnées : Le code commence par définir les coordonnées (latitude et longitude) de trois villes françaises : Paris, Dijon et Tours.
+- Création de la carte : Ensuite, il crée une nouvelle carte Google Maps et l'affiche dans un élément HTML avec l'id 'map'. La carte est centrée sur Paris et a un niveau de zoom de 6.
+- Tracé de la ligne : Enfin, le code crée une ligne (appelée "polyline" dans Google Maps) qui relie les trois villes. Cette ligne est rouge et a une épaisseur de 2 pixels.
